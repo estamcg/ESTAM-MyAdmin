@@ -1,0 +1,14 @@
+Options -Indexes
+
+RewriteEngine On
+RewriteBase /estam-myadmin/
+
+# Always use login as entrypoint for directory
+DirectoryIndex login.php index.php index.html
+
+# Fix wrong local URL like /C:/xampp/htdocs/estam-myadmin/login.php
+RewriteRule ^C:/xampp/htdocs/estam-myadmin/(.*)$ /estam-myadmin/$1 [R=302,L,NE]
+
+# If request is exactly the directory root, redirect cleanly
+RewriteRule ^$ /estam-myadmin/login.php [R=302,L]
+
