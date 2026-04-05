@@ -270,6 +270,7 @@ function StudentFormModal({ programs, editingId, onClose, onSaved }: {
     }
 
     const selectedProgram = programs.find((p) => p.id.toString() === form.program_id);
+    const cityVal = form.city === "Brazzaville" ? "Brazzaville" as const : form.city === "Pointe-Noire" ? "Pointe-Noire" as const : null;
     const payload = {
       last_name: form.last_name.toUpperCase(),
       first_name: form.first_name,
@@ -278,7 +279,7 @@ function StudentFormModal({ programs, editingId, onClose, onSaved }: {
       birth_date: form.birth_date || null,
       birth_place: form.birth_place || null,
       nationality: form.nationality,
-      city: form.city || null,
+      city: cityVal,
       arrondissement: form.arrondissement || null,
       quartier: form.quartier || null,
       adresse_precision: form.adresse_precision || null,
